@@ -305,6 +305,7 @@ Supported integrations:
   pool            Pool
   cline           Cline
   qwen            Qwen Code
+  depression      Depression.ai CLI harness agent
   vscode          VS Code (aliases: code)
 
 Examples:

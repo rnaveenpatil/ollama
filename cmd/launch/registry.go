@@ -33,7 +33,7 @@ type IntegrationInfo struct {
 	Description string
 }
 
-var launcherIntegrationOrder = []string{"claude", "chatgpt", "hermes", "openclaw", "opencode", "hermes-desktop", "codex", "copilot", "omp", "cline", "droid", "dsh", "pi", "pool", "qwen"}
+var launcherIntegrationOrder = []string{"claude", "chatgpt", "hermes", "openclaw", "opencode", "hermes-desktop", "codex", "copilot", "omp", "cline", "droid", "dsh", "pi", "pool", "qwen", "depression"}
 
 var integrationSpecs = []*IntegrationSpec{
 	{
@@ -317,6 +317,22 @@ var integrationSpecs = []*IntegrationSpec{
 				return err
 			},
 			URL: "https://qwen.ai/qwencode",
+		},
+	},
+
+	{
+		Name:        "depression",
+		Runner:      &Depression{},
+		Aliases:     []string{"depression.ai"},
+		Description: "Local CLI harness agent powered by your selected Ollama model",
+		Install: IntegrationInstallSpec{
+			CheckInstalled: func() bool {
+				return depressionInstalled()
+			},
+			EnsureInstalled: func() error {
+				return ensureDepressionInstalled()
+			},
+			URL: "https://pypi.org/project/depression.ai/",
 		},
 	},
 }
